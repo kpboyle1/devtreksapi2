@@ -1,0 +1,14 @@
+args <- commandArgs(TRUE)
+url <- args[1]
+print(url)
+dataset1 <- read.table(url, header=TRUE, sep=",")
+#dataset2 is dataset1 minus the last 3 lines of data
+dataset2 <- head(dataset1, n=-3)
+#dataset3 is the last 3 lines of data used for ci
+dataset3 <- tail(dataset1, n=3)
+model <- lm(energyuse ~ housesize1 + housesize2, data=dataset2)
+f1 <- summary(model)
+print(f1)
+ci <- predict(model, dataset3, interval='confidence')
+print(ci)
+

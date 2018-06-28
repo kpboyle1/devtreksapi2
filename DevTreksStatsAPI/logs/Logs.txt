@@ -1,0 +1,1 @@
+this folder is included because web.config point log files here
